@@ -1,0 +1,103 @@
+# C-Code
+/*ID Block
+ Author: Melissa Lee
+ Date: 9/16/15
+ Project: Assignment 1A
+ Operating System: Windows 10
+ Compiler: Visual Studios 2013
+ */
+
+/*Algorithm
+ Variables:
+ Ticket Type
+ Ticket Price
+ Tickets Sold
+ Gross Sales
+ Commission
+ Commission per Ticket Type
+ Net Sales
+ Total Number of Tickets Sold
+ Total Gross Sales
+ Total Commission
+ Total Net Sales
+ City Taxes
+ Net Income
+ 
+ Input:
+ Prompt user for number of tickets sold in each catagory
+ 
+ Process:
+ 1. Gross Sales: Ticket Price * Tickets Sold
+ 2. Commission: Gross Sales * Commission per Ticket Type
+ 3. Net Sales: Gross Sales - Commission
+ 4. City Taxes = Total Net Sales * 0.06
+ 
+ Output:
+ print Gross Sales, Commission, Net Sales
+ */
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+    double Box_Ticket = 250, Box_Commission = 0.05;
+    int Box_Tickets_Sold, Sideline_Tickets_Sold, Premium_Tickets_Sold, General_Admission_Tickets_Sold;
+    double Sideline_Ticket = 100, Sideline_Commission = 0.025;
+    double Premium_Ticket = 50, Premium_Commission = 0.015;
+    double General_Admission_Ticket = 25, General_Admission_Commission = 0.01;
+    double Box_Gross_Sales, Sideline_Gross_Sales, Premium_Gross_Sales, General_Admission_Gross_Sales;
+    double Total_Box_Commission, Total_Premium_Commission, Total_Sideline_Commission, Total_General_Admission_Commission;
+    double Box_Net_Sales, Sideline_Net_Sales, Premium_Net_Sales, General_Admission_Net_Sales;
+    double Total_Tickets_Sold, Total_Gross_Income, Total_Commission, Total_Net_Sales, City_Taxes, Net_Income;
+    
+    cout << setprecision(2) << fixed << left << showpoint;
+    cout << setw(60) << "Please enter number of Box Type tickets sold:" << endl;
+    cin >> Box_Tickets_Sold;
+    cout << setw(60) <<"Please enter number of Sideline Type tickets sold:" << endl;
+    cin >> Sideline_Tickets_Sold;
+    cout << setw(60) << "Please enter number of Premium Type tickets sold:" << endl;
+    cin >> Premium_Tickets_Sold;
+    cout << setw(60) << "Please enter number of General Admission Type tickets sold:" << endl;
+    cin >> General_Admission_Tickets_Sold;
+    cout << " " << endl;
+    
+    Box_Gross_Sales = Box_Tickets_Sold * Box_Ticket;
+    Sideline_Gross_Sales = Sideline_Tickets_Sold * Sideline_Ticket;
+    Premium_Gross_Sales = Premium_Tickets_Sold * Premium_Ticket;
+    General_Admission_Gross_Sales = General_Admission_Ticket * General_Admission_Tickets_Sold;
+    
+    Total_Box_Commission = Box_Gross_Sales * Box_Commission;
+    Total_Premium_Commission = Premium_Gross_Sales * Premium_Commission;
+    Total_Sideline_Commission = Sideline_Gross_Sales * Sideline_Commission;
+    Total_General_Admission_Commission = General_Admission_Gross_Sales * General_Admission_Commission;
+    
+    Box_Net_Sales = Box_Gross_Sales - Total_Box_Commission;
+    Premium_Net_Sales = Premium_Gross_Sales - Total_Premium_Commission;
+    Sideline_Net_Sales = Sideline_Gross_Sales - Total_Sideline_Commission;
+    General_Admission_Net_Sales = General_Admission_Gross_Sales - Total_General_Admission_Commission;
+    
+    Total_Tickets_Sold = Box_Tickets_Sold + Sideline_Tickets_Sold + Premium_Tickets_Sold + General_Admission_Tickets_Sold;
+    Total_Gross_Income = Box_Gross_Sales + Sideline_Gross_Sales + Premium_Gross_Sales + General_Admission_Gross_Sales;
+    Total_Commission = Total_Box_Commission + Total_Sideline_Commission + Total_Premium_Commission + Total_General_Admission_Commission;
+    Total_Net_Sales = Box_Net_Sales + Premium_Net_Sales + Sideline_Net_Sales + General_Admission_Net_Sales;
+    City_Taxes = Total_Net_Sales * 0.06;
+    Net_Income = Total_Net_Sales - City_Taxes;
+    
+    cout << setw(15) << "Ticket Type" << setw(15) << "Ticket Price" << setw(15) << "Tickets Sold" << setw(15) << "Gross Sales" << setw(15) << "Commission" << setw(15) << "Net Sales" << endl;
+    cout << "--------------------------------------------------------------------------------------------" << endl;
+    cout << setw(15) << "Box" << "$" << setw(14) << (int)Box_Ticket << setw(15) << Box_Tickets_Sold << "$" << setw(14) << Box_Gross_Sales << "$" << setw(14) << Total_Box_Commission << "$" << setw(14) << Box_Net_Sales << endl;
+    cout << setw(15) << "Sideline" << "$" << setw(14) << (int)Sideline_Ticket << setw(15) <<
+    Sideline_Tickets_Sold << "$" << setw(14) << Sideline_Gross_Sales << "$" << setw(14) << Total_Sideline_Commission << "$" << setw(14) << Sideline_Net_Sales << endl;
+    cout << setw(15) << "Premium" << "$" << setw(14) << (int)Premium_Ticket << setw(15) << Premium_Tickets_Sold << "$" << setw(14) << Premium_Gross_Sales << "$" << setw(14) << Total_Premium_Commission << "$" << setw(14) << Premium_Net_Sales << endl;
+    cout << setw(15) << "Gen. Adm." << "$" << setw(14) << (int)General_Admission_Ticket << setw(15) << General_Admission_Tickets_Sold << "$" << setw(14) << General_Admission_Gross_Sales << "$" << setw(14) << Total_General_Admission_Commission << "$" << setw(14) << General_Admission_Net_Sales << endl;
+    cout << "--------------------------------------------------------------------------------------------" << endl;
+    cout << " " << endl;
+    cout << setw(10) << " " << setw(30) << "Total # of tickets sold: " << (int)Total_Tickets_Sold << endl;
+    cout << setw(10) << " " << setw(30) << "Total Gross Sales: " << "$" << Total_Gross_Income << endl;
+    cout << setw(10) << " " << setw(30) << "Total Commission: " << "$" << Total_Commission << endl;
+    cout << setw(10) << " " << setw(30) << "Total Net Sales: " << "$" << Total_Net_Sales << endl;
+    cout << setw(10) << " " << setw(30) << "City Taxes: " << "$" << City_Taxes << endl;
+    cout << setw(10) << " " << setw(30) << "Net Income: " << "$" << Net_Income << endl;
+    return 0;
+}
